@@ -30,6 +30,12 @@ jobs:
       - name: Build workspace UI package
         run: pnpm -F @anlg/ui build
 
+      - name: Regenerate i18n catalogs (rebranded strings)
+        run: |
+          pnpm -F desktop exec lingui extract --clean --workers 1
+          pnpm -F desktop exec lingui compile --workers 1
+          grep -q "Nixo" apps/desktop/src/i18n/locales/en/messages.ts || (echo "catalog regeneration failed" && exit 1)
+
       - name: Build Nixo Recorder (unsigned)
         run: pnpm -F desktop tauri build
         env:
