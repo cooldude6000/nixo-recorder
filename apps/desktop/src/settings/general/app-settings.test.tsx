@@ -42,7 +42,7 @@ describe("AppSettingsView", () => {
     renderAppSettings();
 
     expect(
-      screen.getByRole("switch", { name: "Start Anarlog at login" })
+      screen.getByRole("switch", { name: "Start Nixo at login" })
         .parentElement?.className,
     ).not.toContain("w-48");
   });
@@ -54,7 +54,7 @@ describe("AppSettingsView", () => {
     expect(
       screen.queryByRole("switch", { name: "Show app in Dock" }),
     ).toBeNull();
-    expect(screen.queryByText("Open Anarlog from the menu bar.")).toBeNull();
+    expect(screen.queryByText("Open Nixo from the menu bar.")).toBeNull();
     expect(screen.getByRole("switch", { name: "Show tray icon" })).toBeTruthy();
   });
 
@@ -68,7 +68,7 @@ describe("AppSettingsView", () => {
 
     expect(automaticUpdates.onChange).toHaveBeenCalledWith(true);
     expect(
-      screen.getByText(/installed the next time Anarlog opens/),
+      screen.getByText(/installed the next time Nixo opens/),
     ).toBeTruthy();
   });
 

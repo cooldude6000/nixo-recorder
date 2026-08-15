@@ -106,7 +106,7 @@ export function SettingsTeam() {
             <LockSimple className="text-muted-foreground mt-0.5 size-4 shrink-0" />
             <div>
               <h3 className="text-sm font-medium">
-                <Trans>Anarlog Pro required</Trans>
+                <Trans>Nixo Pro required</Trans>
               </h3>
               <p className="text-muted-foreground mt-1 text-xs leading-5">
                 <Trans>

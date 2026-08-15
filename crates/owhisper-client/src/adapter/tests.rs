@@ -111,86 +111,86 @@ fn test_adapter_kind_from_url_and_languages() {
     use anlg_language::ISO639::*;
 
     let cases: &[(&str, &[anlg_language::ISO639], Option<&str>, AdapterKind)] = &[
-        // AnarlogCloud - always routes to Anarlog adapter (proxy owns provider selection)
+        // AnarlogCloud - always routes to Nixo adapter (proxy owns provider selection)
         (
             "https://api.anarlog.so/stt",
             &[En],
             None,
-            AdapterKind::Anarlog,
+            AdapterKind::Nixo,
         ),
         (
             "https://api.anarlog.so/stt",
             &[En],
             Some("cloud"),
-            AdapterKind::Anarlog,
+            AdapterKind::Nixo,
         ),
         (
             "https://api.anarlog.so/stt",
             &[En, Ko],
             Some("cloud"),
-            AdapterKind::Anarlog,
+            AdapterKind::Nixo,
         ),
         (
             "https://api.anarlog.so/stt",
             &[Zh],
             None,
-            AdapterKind::Anarlog,
+            AdapterKind::Nixo,
         ),
         (
             "https://api.anarlog.so/stt",
             &[Ja],
             None,
-            AdapterKind::Anarlog,
+            AdapterKind::Nixo,
         ),
         (
             "https://api.anarlog.so/stt",
             &[Ar],
             None,
-            AdapterKind::Anarlog,
+            AdapterKind::Nixo,
         ),
         (
             "https://api.anarlog.so/stt",
             &[De],
             None,
-            AdapterKind::Anarlog,
+            AdapterKind::Nixo,
         ),
         // AnarlogCloud - multi-language
         (
             "https://api.anarlog.so/stt",
             &[En, Es],
             None,
-            AdapterKind::Anarlog,
+            AdapterKind::Nixo,
         ),
         (
             "https://api.anarlog.so/stt",
             &[En, Ko],
             None,
-            AdapterKind::Anarlog,
+            AdapterKind::Nixo,
         ),
         (
             "https://api.anarlog.so/stt",
             &[Ko, En],
             None,
-            AdapterKind::Anarlog,
+            AdapterKind::Nixo,
         ),
         (
             "https://api.anarlog.so/stt",
             &[En, De],
             None,
-            AdapterKind::Anarlog,
+            AdapterKind::Nixo,
         ),
         // localhost proxy
         (
             "http://localhost:3001/stt",
             &[En],
             None,
-            AdapterKind::Anarlog,
+            AdapterKind::Nixo,
         ),
         (
             "http://localhost:3001/stt",
             &[Ar],
             None,
-            AdapterKind::Anarlog,
+            AdapterKind::Nixo,
         ),
         // localhost argmax
         (
@@ -242,7 +242,7 @@ fn test_has_live_mode() {
         AdapterKind::DashScope,
         AdapterKind::Mistral,
         AdapterKind::Xai,
-        AdapterKind::Anarlog,
+        AdapterKind::Nixo,
     ];
     for kind in live {
         assert!(kind.has_live_mode(), "{kind:?} should support live mode");
@@ -383,8 +383,8 @@ fn test_anarlog_proxy_always_selects_anarlog_adapter() {
             let langs: Vec<anlg_language::Language> = langs.iter().map(|l| (*l).into()).collect();
             assert_eq!(
                 AdapterKind::from_url_and_languages(url, &langs, Some("cloud")),
-                AdapterKind::Anarlog,
-                "proxy URL should always select Anarlog adapter regardless of languages: url={url}, langs={langs:?}"
+                AdapterKind::Nixo,
+                "proxy URL should always select Nixo adapter regardless of languages: url={url}, langs={langs:?}"
             );
         }
     }
@@ -399,8 +399,8 @@ fn test_anarlog_cloud_adapter_supports_all_languages() {
     for langs in combos {
         let langs: Vec<anlg_language::Language> = langs.iter().map(|l| (*l).into()).collect();
         assert!(
-            AdapterKind::Anarlog.is_supported_languages_live(&langs, Some("cloud")),
-            "Anarlog adapter should support all languages: {langs:?}"
+            AdapterKind::Nixo.is_supported_languages_live(&langs, Some("cloud")),
+            "Nixo adapter should support all languages: {langs:?}"
         );
     }
 }
@@ -413,10 +413,10 @@ fn test_anarlog_soniqo_live_limits_parakeet_languages() {
     let ko: Vec<anlg_language::Language> = vec![Ko.into()];
 
     assert!(
-        AdapterKind::Anarlog.is_supported_languages_live(&fr, Some("soniqo-parakeet-streaming"))
+        AdapterKind::Nixo.is_supported_languages_live(&fr, Some("soniqo-parakeet-streaming"))
     );
     assert!(
-        !AdapterKind::Anarlog.is_supported_languages_live(&ko, Some("soniqo-parakeet-streaming"))
+        !AdapterKind::Nixo.is_supported_languages_live(&ko, Some("soniqo-parakeet-streaming"))
     );
 }
 
@@ -426,8 +426,8 @@ fn test_anarlog_soniqo_live_rejects_batch_only_models() {
 
     let fr: Vec<anlg_language::Language> = vec![Fr.into()];
 
-    assert!(!AdapterKind::Anarlog.is_supported_languages_live(&fr, Some("soniqo-parakeet-batch")));
-    assert!(!AdapterKind::Anarlog.is_supported_languages_live(&fr, Some("soniqo-qwen3-small")));
+    assert!(!AdapterKind::Nixo.is_supported_languages_live(&fr, Some("soniqo-parakeet-batch")));
+    assert!(!AdapterKind::Nixo.is_supported_languages_live(&fr, Some("soniqo-qwen3-small")));
 }
 
 #[test]

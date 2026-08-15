@@ -55,7 +55,7 @@ export function CloudApiSection() {
       });
       if (backfillFailed) {
         sonnerToast.error(
-          "Cloud API enabled, but existing meetings could not be uploaded. Anarlog will retry.",
+          "Cloud API enabled, but existing meetings could not be uploaded. Nixo will retry.",
         );
       } else if (settings.enabled) {
         sonnerToast.success(
@@ -94,7 +94,7 @@ export function CloudApiSection() {
             </h2>
             <p className="text-muted-foreground mt-1 text-xs leading-5">
               Access meetings remotely through the REST API and MCP connectors
-              with Anarlog Pro.
+              with Nixo Pro.
             </p>
           </div>
         </div>
@@ -157,7 +157,7 @@ function CloudApiHeading({ error }: { error?: string }) {
         Cloud API & Connectors
       </h2>
       <p className="text-muted-foreground mt-1 text-xs">
-        Uploads meeting content for remote access while Anarlog is closed.
+        Uploads meeting content for remote access while Nixo is closed.
       </p>
       {error ? <p className="text-destructive mt-2 text-xs">{error}</p> : null}
     </div>

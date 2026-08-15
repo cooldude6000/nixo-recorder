@@ -110,14 +110,14 @@ mod tests {
 
     #[test]
     fn test_is_self_app_matches_known_bundle_ids() {
-        assert!(is_self_app(&app("com.anarlog.stable", "Anarlog")));
-        assert!(is_self_app(&app("com.hyprnote.stable", "Anarlog")));
+        assert!(is_self_app(&app("com.anarlog.stable", "Nixo")));
+        assert!(is_self_app(&app("com.hyprnote.stable", "Nixo")));
         assert!(is_self_app(&app("com.hyprnote.Hyprnote", "Hyprnote")));
     }
 
     #[test]
     fn test_is_self_app_matches_renamed_app_names() {
-        assert!(is_self_app(&app("pid:42", "Anarlog")));
+        assert!(is_self_app(&app("pid:42", "Nixo")));
         assert!(is_self_app(&app("pid:43", "Char Nightly")));
         assert!(is_self_app(&app("pid:44", "Hyprnote Staging")));
     }
@@ -125,7 +125,7 @@ mod tests {
     #[test]
     fn test_is_self_app_matches_path_fallbacks() {
         assert!(is_self_app(&app(
-            "/Applications/Anarlog.app/Contents/MacOS/anarlog",
+            "/Applications/Nixo.app/Contents/MacOS/anarlog",
             "Unknown",
         )));
         assert!(is_self_app(&app(

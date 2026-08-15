@@ -21,7 +21,7 @@ pub(crate) struct CloudMcpServer {
 #[tool_router]
 impl CloudMcpServer {
     #[tool(
-        description = "List Anarlog meetings with optional title/id search, recurring series filter, and pagination.",
+        description = "List Nixo meetings with optional title/id search, recurring series filter, and pagination.",
         annotations(
             read_only_hint = true,
             destructive_hint = false,
@@ -51,7 +51,7 @@ impl CloudMcpServer {
     }
 
     #[tool(
-        description = "Get notes, summaries, participants, and action items for an Anarlog meeting.",
+        description = "Get notes, summaries, participants, and action items for an Nixo meeting.",
         annotations(
             read_only_hint = true,
             destructive_hint = false,
@@ -72,7 +72,7 @@ impl CloudMcpServer {
     }
 
     #[tool(
-        description = "Get a bounded page of transcript words and readable text for an Anarlog meeting. Pass pagination.next_offset as offset to continue.",
+        description = "Get a bounded page of transcript words and readable text for an Nixo meeting. Pass pagination.next_offset as offset to continue.",
         annotations(
             read_only_hint = true,
             destructive_hint = false,
@@ -137,7 +137,7 @@ impl ServerHandler for CloudMcpServer {
                 env!("CARGO_PKG_VERSION"),
             ))
             .with_instructions(
-                "Read-only hosted access to the user's opted-in Anarlog meeting data. Start with list_meetings, then use get_meeting, get_meeting_transcript, and get_recurring_meeting_history. Every tool is idempotent and performs no writes.",
+                "Read-only hosted access to the user's opted-in Nixo meeting data. Start with list_meetings, then use get_meeting, get_meeting_transcript, and get_recurring_meeting_history. Every tool is idempotent and performs no writes.",
             )
     }
 }
@@ -157,7 +157,7 @@ pub(crate) fn mcp_service(
 
 fn user_id(auth: Option<anlg_api_auth::AuthContext>) -> Result<String, McpError> {
     auth.map(|auth| auth.claims.sub)
-        .ok_or_else(|| McpError::invalid_request("Provide a valid Anarlog cloud API key", None))
+        .ok_or_else(|| McpError::invalid_request("Provide a valid Nixo cloud API key", None))
 }
 
 fn structured(value: &impl Serialize) -> Result<CallToolResult, McpError> {

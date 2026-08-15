@@ -17,7 +17,7 @@ export const getScheme = async (): Promise<DesktopScheme> => {
     "com.hyprnote.Hyprnote": "anarlog",
     "com.hyprnote.staging": "anarlog-staging",
     "com.hyprnote.dev": "anarlog-dev",
-    "so.anarlog.Anarlog": "anarlog",
+    "so.anarlog.Nixo": "anarlog",
     "com.anarlog.stable": "anarlog",
     "com.anarlog.staging": "anarlog-staging",
     "com.anarlog.dev": "anarlog-dev",

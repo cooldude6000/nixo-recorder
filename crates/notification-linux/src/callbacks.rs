@@ -31,7 +31,7 @@ pub(crate) fn primary_action(
         label: notification
             .action_label
             .as_deref()
-            .unwrap_or("Open Anarlog"),
+            .unwrap_or("Open Nixo"),
         destructive: matches!(
             notification.action_variant,
             Some(anlg_notification_interface::NotificationActionVariant::Destructive)
@@ -132,14 +132,14 @@ mod tests {
         assert_eq!(
             primary_action(&default_action),
             PrimaryAction::Accept {
-                label: "Open Anarlog",
+                label: "Open Nixo",
                 destructive: false,
             }
         );
 
         let destructive_action = anlg_notification_interface::Notification::builder()
             .title("Did your meeting end?")
-            .message("Anarlog will stop listening soon.")
+            .message("Nixo will stop listening soon.")
             .action_label("Stop")
             .action_variant(anlg_notification_interface::NotificationActionVariant::Destructive)
             .build();

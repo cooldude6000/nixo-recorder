@@ -252,8 +252,8 @@ describe("SyncStatusIndicator", () => {
     ],
     [
       "not_entitled",
-      "Anarlog Pro required",
-      "Anarlog Pro is required to use cloud sync.",
+      "Nixo Pro required",
+      "Nixo Pro is required to use cloud sync.",
     ],
     [
       "identity_mismatch",
@@ -289,7 +289,7 @@ describe("SyncStatusIndicator", () => {
     expect(await screen.findByText("Sync status unavailable")).toBeTruthy();
     expect(
       screen.getByText(
-        "Anarlog couldn't read cloud sync status. Your notes are still available locally.",
+        "Nixo couldn't read cloud sync status. Your notes are still available locally.",
       ),
     ).toBeTruthy();
     fireEvent.click(screen.getByText("Retry"));
@@ -543,7 +543,7 @@ describe("SyncStatusIndicator", () => {
     expect(await screen.findByText("Restoring cloud sync...")).toBeTruthy();
     expect(
       screen.getByText(
-        "Anarlog is repairing cloud sync in the background. Your notes remain available locally.",
+        "Nixo is repairing cloud sync in the background. Your notes remain available locally.",
       ),
     ).toBeTruthy();
     expect(screen.queryByText("Connecting...")).toBeNull();
@@ -567,7 +567,7 @@ describe("SyncStatusIndicator", () => {
     expect(await screen.findByText("Cloud sync delayed")).toBeTruthy();
     expect(
       screen.getByText(
-        "Anarlog will keep retrying in the background. Your notes remain available locally.",
+        "Nixo will keep retrying in the background. Your notes remain available locally.",
       ),
     ).toBeTruthy();
     expect(
@@ -593,7 +593,7 @@ describe("SyncStatusIndicator", () => {
     expect(await screen.findByText("Sync issue")).toBeTruthy();
     expect(
       screen.getByText(
-        "Anarlog will retry automatically. This does not affect your notes.",
+        "Nixo will retry automatically. This does not affect your notes.",
       ),
     ).toBeTruthy();
     expect(screen.queryByText(/already_exists/)).toBeNull();

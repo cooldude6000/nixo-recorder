@@ -475,7 +475,7 @@ export function useCaptureLifecycle(sessionId: string) {
             });
             if (transcriptWriteError || !details.liveTranscriptionActive) {
               notifyFailure(
-                "Anarlog could not finish saving the transcript. The recording was kept so you can try again.",
+                "Nixo could not finish saving the transcript. The recording was kept so you can try again.",
                 "post-capture-transcript-incomplete",
               );
             } else {
@@ -509,8 +509,8 @@ export function useCaptureLifecycle(sessionId: string) {
         ) {
           notifyFailure(
             details.audioPath
-              ? "Anarlog could not finish saving the transcript. The recording was kept so you can try again."
-              : "Anarlog could not save part of the live transcript.",
+              ? "Nixo could not finish saving the transcript. The recording was kept so you can try again."
+              : "Nixo could not save part of the live transcript.",
             details.audioPath
               ? "post-capture-transcript-incomplete"
               : "live-transcript-persist-failed",
@@ -592,7 +592,7 @@ export function useCaptureLifecycle(sessionId: string) {
                 error,
               );
               notifyFailure(
-                "The transcript was saved, but Anarlog could not start the summary. Try generating it again.",
+                "The transcript was saved, but Nixo could not start the summary. Try generating it again.",
                 "post-capture-summary-failed",
               );
               await requestRecovery();
@@ -610,7 +610,7 @@ export function useCaptureLifecycle(sessionId: string) {
             summaryScheduled = false;
             console.error("[listener] failed to schedule summary", error);
             notifyFailure(
-              "The transcript was saved, but Anarlog could not start the summary. Try generating it again.",
+              "The transcript was saved, but Nixo could not start the summary. Try generating it again.",
               "post-capture-summary-failed",
             );
           }

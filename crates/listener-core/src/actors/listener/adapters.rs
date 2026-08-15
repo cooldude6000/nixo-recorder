@@ -145,7 +145,7 @@ pub(super) async fn spawn_rx_task(
         DashScope => DashScopeAdapter,
         Mistral => MistralAdapter,
         Xai => XaiAdapter,
-        Anarlog => AnarlogAdapter,
+        Nixo => AnarlogAdapter,
     }, batch_only: [
         AquaVoice,
         Pyannote,

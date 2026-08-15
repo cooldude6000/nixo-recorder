@@ -442,13 +442,13 @@ mod tests {
         let mut params = QueryParams::default();
         params.insert(
             "keyword".to_string(),
-            QueryValue::Multi(vec!["Anarlog".to_string(), "transcription".to_string()]),
+            QueryValue::Multi(vec!["Nixo".to_string(), "transcription".to_string()]),
         );
 
         let listen_params = build_listen_params(&params);
 
         assert_eq!(listen_params.keywords.len(), 2);
-        assert!(listen_params.keywords.contains(&"Anarlog".to_string()));
+        assert!(listen_params.keywords.contains(&"Nixo".to_string()));
         assert!(
             listen_params
                 .keywords

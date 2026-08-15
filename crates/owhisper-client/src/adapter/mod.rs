@@ -492,7 +492,7 @@ pub enum AdapterKind {
     #[strum(serialize = "xai")]
     Xai,
     #[strum(serialize = "anarlog")]
-    Anarlog,
+    Nixo,
 }
 
 impl AdapterKind {
@@ -504,7 +504,7 @@ impl AdapterKind {
         use crate::providers::Provider;
 
         if is_anarlog_proxy(base_url) {
-            return Self::Anarlog;
+            return Self::Nixo;
         }
 
         if is_local_argmax(base_url) {
@@ -588,7 +588,7 @@ impl AdapterKind {
             | Self::DashScope
             | Self::Mistral
             | Self::Xai
-            | Self::Anarlog => true,
+            | Self::Nixo => true,
         }
     }
 
@@ -625,7 +625,7 @@ impl AdapterKind {
             | Self::Speechmatics
             | Self::Together => LanguageSupport::NotSupported,
             Self::Xai => XaiAdapter::language_support_live(languages),
-            Self::Anarlog => AnarlogAdapter::language_support_live(languages, model),
+            Self::Nixo => AnarlogAdapter::language_support_live(languages, model),
         }
     }
 
@@ -663,7 +663,7 @@ impl AdapterKind {
             Self::Speechmatics => SpeechmaticsAdapter::language_support_batch(languages),
             Self::Together => TogetherAdapter::language_support_batch(languages),
             Self::Xai => XaiAdapter::language_support_batch(languages),
-            Self::Anarlog => AnarlogAdapter::language_support_batch(languages, model),
+            Self::Nixo => AnarlogAdapter::language_support_batch(languages, model),
         }
     }
 

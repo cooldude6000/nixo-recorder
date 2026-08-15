@@ -126,7 +126,7 @@ function CliSection({
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div className="min-w-0">
             <h3 className="flex items-center gap-1.5 text-sm font-medium">
-              Anarlog CLI
+              Nixo CLI
               {isInstalled && (
                 <CheckCircle
                   aria-label="Installed"

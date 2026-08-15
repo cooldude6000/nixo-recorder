@@ -88,7 +88,7 @@ describe("CloudSync initial sync progress", () => {
       expect.objectContaining({
         key: "cloudsync-initial-sync-complete-user-1",
         title: "Cloud sync complete",
-        message: "Your Anarlog data is ready on this device.",
+        message: "Your Nixo data is ready on this device.",
       }),
     );
   });

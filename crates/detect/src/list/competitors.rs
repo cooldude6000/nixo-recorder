@@ -134,7 +134,7 @@ mod tests {
             "Notion.exe",
             "Slack.exe",
             "ChatGPT.exe",
-            "Anarlog.exe",
+            "Nixo.exe",
             "explorer.exe",
         ] {
             assert_eq!(competitor_name_for_windows_process(process_name), None);
