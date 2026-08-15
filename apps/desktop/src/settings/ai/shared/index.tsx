@@ -72,7 +72,7 @@ export function AnarlogProviderIcon() {
   return (
     <img
       src={ANARLOG_ICON_SRC}
-      alt="Anarlog"
+      alt="Nixo"
       data-slot="provider-logo"
       className="size-full object-contain object-center"
     />
@@ -323,9 +323,9 @@ export function NonAnarlogProviderCard({
     },
   });
   const keychainToastDescription = isKeychainRecoveryInProgress
-    ? t`Unlock your login Keychain in the macOS prompt. Anarlog will retry saving this API key automatically.`
+    ? t`Unlock your login Keychain in the macOS prompt. Nixo will retry saving this API key automatically.`
     : (repairMutation.error?.message ??
-      t`macOS cannot access your login Keychain. Repairing briefly locks it and asks for your Mac password before Anarlog retries this API key.`);
+      t`macOS cannot access your login Keychain. Repairing briefly locks it and asks for your Mac password before Nixo retries this API key.`);
 
   return (
     <AccordionItem

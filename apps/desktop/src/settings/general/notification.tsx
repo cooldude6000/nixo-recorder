@@ -184,7 +184,7 @@ export function NotificationSettingsView() {
             title={<Trans>Bounce app icon when a transcript is ready</Trans>}
             description={
               <Trans>
-                Get dock attention when transcription finishes while Anarlog is
+                Get dock attention when transcription finishes while Nixo is
                 in the background.
               </Trans>
             }
@@ -200,7 +200,7 @@ export function NotificationSettingsView() {
             title={<Trans>Bounce app icon when a summary is ready</Trans>}
             description={
               <Trans>
-                Get dock attention when your summary finishes while Anarlog is
+                Get dock attention when your summary finishes while Nixo is
                 in the background.
               </Trans>
             }

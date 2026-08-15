@@ -157,7 +157,7 @@ export function E2eeSetupDialog({
           <DialogDescription className="text-foreground max-w-[260px] text-center text-[13px] leading-[1.36]">
             <Trans>
               Your recovery key encrypts synced notes before they leave this
-              device. Anarlog cannot read or recover it.
+              device. Nixo cannot read or recover it.
             </Trans>
           </DialogDescription>
         </DialogHeader>
@@ -204,7 +204,7 @@ export function E2eeSetupDialog({
             <div className="space-y-3">
               <p className="text-muted-foreground text-xs leading-5">
                 <Trans>
-                  Enter the recovery key from an existing Anarlog device.
+                  Enter the recovery key from an existing Nixo device.
                 </Trans>
               </p>
               <importForm.Field name="recoveryKey">

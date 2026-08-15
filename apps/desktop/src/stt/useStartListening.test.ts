@@ -724,7 +724,7 @@ describe("useStartListening", () => {
       "session-1:generated-id",
     );
     expect(sonnerToastErrorMock).toHaveBeenCalledWith(
-      "Anarlog could not safely start recording. Please try again.",
+      "Nixo could not safely start recording. Please try again.",
       { id: "capture-state-persist-failed" },
     );
     consoleError.mockRestore();
@@ -2577,7 +2577,7 @@ describe("useStartListening", () => {
     });
 
     expect(sonnerToastErrorMock).toHaveBeenCalledWith(
-      "Anarlog could not save part of the live transcript.",
+      "Nixo could not save part of the live transcript.",
       { id: "live-transcript-persist-failed", duration: Infinity },
     );
     expect(queueAutoEnhanceIfSummaryEmptyMock).not.toHaveBeenCalled();
@@ -2627,7 +2627,7 @@ describe("useStartListening", () => {
     });
 
     expect(sonnerToastErrorMock).toHaveBeenCalledWith(
-      "Anarlog could not finish saving the transcript. The recording was kept so you can try again.",
+      "Nixo could not finish saving the transcript. The recording was kept so you can try again.",
       { id: "post-capture-transcript-incomplete", duration: Infinity },
     );
     expect(markSessionAudioTranscriptionCompleteMock).not.toHaveBeenCalled();
@@ -2746,7 +2746,7 @@ describe("useStartListening", () => {
     });
 
     expect(sonnerToastErrorMock).toHaveBeenCalledWith(
-      "Anarlog could not finish saving the transcript. The recording was kept so you can try again.",
+      "Nixo could not finish saving the transcript. The recording was kept so you can try again.",
       { id: "post-capture-transcript-incomplete", duration: Infinity },
     );
     expect(queueAutoEnhanceIfSummaryEmptyMock).not.toHaveBeenCalled();
@@ -2990,7 +2990,7 @@ describe("useStartListening", () => {
 
     expect(queueAutoEnhanceIfSummaryEmptyMock).toHaveBeenCalledOnce();
     expect(sonnerToastErrorMock).toHaveBeenCalledWith(
-      "The transcript was saved, but Anarlog could not start the summary. Try generating it again.",
+      "The transcript was saved, but Nixo could not start the summary. Try generating it again.",
       { id: "post-capture-summary-failed", duration: Infinity },
     );
     expect(clearCaptureLifecycleMarkerMock).not.toHaveBeenCalled();
@@ -3277,7 +3277,7 @@ describe("useStartListening", () => {
 
     await waitFor(() => {
       expect(sendMeetingChatMessageMock).toHaveBeenCalledWith(
-        "I'm using Anarlog to record and transcribe this meeting. https://anarlog.so",
+        "I'm using Nixo to record and transcribe this meeting. https://anarlog.so",
         ["com.tinyspeck.slackmacgap"],
       );
     });
@@ -3412,7 +3412,7 @@ describe("useStartListening", () => {
     expect(sonnerToastWarningMock).not.toHaveBeenCalled();
   });
 
-  test("keeps the Slack scope when Anarlog also appears in the mic-active apps", async () => {
+  test("keeps the Slack scope when Nixo also appears in the mic-active apps", async () => {
     useConfigValueMock.mockImplementation((key: string) =>
       key === "ai_language"
         ? "en"
@@ -3423,7 +3423,7 @@ describe("useStartListening", () => {
     listMicUsingApplicationsMock.mockResolvedValue({
       status: "ok",
       data: [
-        { id: "com.anarlog.dev", name: "Anarlog Dev" },
+        { id: "com.anarlog.dev", name: "Nixo Dev" },
         { id: "com.tinyspeck.slackmacgap", name: "Slack" },
       ],
     });
@@ -3474,7 +3474,7 @@ describe("useStartListening", () => {
       "expected exactly one recognized meeting app bundle",
     );
     expect(sonnerToastWarningMock).toHaveBeenCalledWith(
-      "Recording started, but Anarlog could not post the meeting chat disclosure.",
+      "Recording started, but Nixo could not post the meeting chat disclosure.",
       { id: "meeting-disclosure-send-failed", duration: Infinity },
     );
     warn.mockRestore();
@@ -3624,7 +3624,7 @@ describe("useStartListening", () => {
       error,
     );
     expect(sonnerToastWarningMock).toHaveBeenCalledWith(
-      "Recording started, but Anarlog could not post the meeting chat disclosure.",
+      "Recording started, but Nixo could not post the meeting chat disclosure.",
       { id: "meeting-disclosure-send-failed", duration: Infinity },
     );
     warn.mockRestore();
@@ -3649,7 +3649,7 @@ describe("useStartListening", () => {
       expect(startMeetingChatCaptureMock).toHaveBeenCalledWith({
         sessionId: "session-1",
         excludedTexts: [
-          "I'm using Anarlog to record and transcribe this meeting. https://anarlog.so",
+          "I'm using Nixo to record and transcribe this meeting. https://anarlog.so",
         ],
       });
     });
@@ -3687,7 +3687,7 @@ describe("useStartListening", () => {
       expect(startMeetingChatCaptureMock).toHaveBeenCalledWith({
         sessionId: "session-1",
         excludedTexts: [
-          "I'm using Anarlog to record and transcribe this meeting. https://anarlog.so",
+          "I'm using Nixo to record and transcribe this meeting. https://anarlog.so",
         ],
       });
     });

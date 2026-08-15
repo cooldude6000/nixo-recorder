@@ -1,0 +1,50 @@
+name: build-macos
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.1.1
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - uses: dtolnay/rust-toolchain@stable
+
+      - uses: Swatinem/rust-cache@v2
+
+      - name: Install JS dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build workspace UI package
+        run: pnpm -F @anlg/ui build
+
+      - name: Regenerate i18n catalogs (rebranded strings)
+        run: |
+          pnpm -F desktop exec lingui extract --clean --workers 1
+          pnpm -F desktop exec lingui compile --workers 1
+          grep -q "Nixo" apps/desktop/src/i18n/locales/en/messages.ts || (echo "catalog regeneration failed" && exit 1)
+
+      - name: Build Nixo Recorder (unsigned)
+        run: pnpm -F desktop tauri build
+        env:
+          CI: "true"
+          VITE_API_URL: "https://cloud-disabled.withnixo.invalid"
+
+      - name: Upload dmg
+        uses: actions/upload-artifact@v4
+        with:
+          name: nixo-recorder-macos-arm64
+          path: apps/desktop/src-tauri/target/release/bundle/dmg/*.dmg
+          if-no-files-found: error

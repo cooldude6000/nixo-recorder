@@ -142,11 +142,11 @@ export function createToastRegistry({
         icon: (
           <img
             src={ANARLOG_ICON_SRC}
-            alt="Anarlog"
+            alt="Nixo"
             className="size-5 object-contain object-center"
           />
         ),
-        description: "Sign in to get the most out of Anarlog",
+        description: "Sign in to get the most out of Nixo",
         primaryAction: {
           label: "Sign in",
           onClick: onSignIn,
@@ -230,7 +230,7 @@ export function createDesktopUpdateToast(
       // A new ID prevents Sonner from retaining the loading state used while
       // this update was downloading.
       id: `${id}:ready`,
-      description: `Anarlog ${update.version} is ready to install`,
+      description: `Nixo ${update.version} is ready to install`,
       primaryAction: busy
         ? undefined
         : { label: "Restart", onClick: update.installUpdate },
@@ -245,7 +245,7 @@ export function createDesktopUpdateToast(
         : ` (${Math.round(update.progress * 100)}%)`;
     return {
       id: `${id}:downloading`,
-      description: `Downloading Anarlog ${update.version}${progress}`,
+      description: `Downloading Nixo ${update.version}${progress}`,
       lifecycle: { type: "condition-bound" },
       loading: true,
     };
@@ -265,7 +265,7 @@ export function createDesktopUpdateToast(
 
   return {
     id: `${id}:available`,
-    description: `Anarlog ${update.version} is available`,
+    description: `Nixo ${update.version} is available`,
     primaryAction: busy
       ? undefined
       : { label: "Download", onClick: update.downloadUpdate },

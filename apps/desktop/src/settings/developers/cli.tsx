@@ -134,7 +134,7 @@ function CliSection({
       <div className="flex flex-col gap-4">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div className="min-w-0">
-            <h3 className="text-sm font-medium">Anarlog CLI</h3>
+            <h3 className="text-sm font-medium">Nixo CLI</h3>
             <CopyableCommand command={`${commandName} --json meetings list`} />
             <CliStatus status={status} isLoading={isLoading} error={error} />
           </div>

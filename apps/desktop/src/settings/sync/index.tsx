@@ -422,7 +422,7 @@ export function SettingsSync() {
             <div>
               <h3 className="text-sm font-medium">
                 {session ? (
-                  <Trans>Cloud sync is available with Anarlog Pro</Trans>
+                  <Trans>Cloud sync is available with Nixo Pro</Trans>
                 ) : (
                   <Trans>Sign in to use cloud sync</Trans>
                 )}
@@ -457,7 +457,7 @@ export function SettingsSync() {
         description:
           credentialBlock === "setup_required"
             ? t`Set up your recovery key to start encrypted cloud sync.`
-            : t`Anarlog could not start cloud sync on this device.`,
+            : t`Nixo could not start cloud sync on this device.`,
       };
     }
     if (statusQuery.isError) {
@@ -478,8 +478,8 @@ export function SettingsSync() {
         label: t`Sync needs attention`,
         description:
           status.last_error_kind === "transient"
-            ? t`Anarlog will retry automatically.`
-            : (status.last_error ?? t`Anarlog will keep retrying.`),
+            ? t`Nixo will retry automatically.`
+            : (status.last_error ?? t`Nixo will keep retrying.`),
       };
     }
     if (status?.activity_paused) {
@@ -678,7 +678,7 @@ export function SettingsSync() {
                 <Trans>
                   Cloud sync and {cloudStorageService} can both change the same
                   files, which can create conflicted copies and incomplete
-                  recordings. Move your Anarlog storage location to a folder
+                  recordings. Move your Nixo storage location to a folder
                   that {cloudStorageService} does not sync.
                 </Trans>
               </p>
@@ -825,7 +825,7 @@ export function SettingsSync() {
             </DialogTitle>
             <DialogDescription>
               <Trans>
-                Install Anarlog and sign in with this account on the new device.
+                Install Nixo and sign in with this account on the new device.
                 Choose “Use an existing key” when prompted, then enter your
                 saved recovery key.
               </Trans>

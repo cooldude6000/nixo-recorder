@@ -28,7 +28,7 @@ export async function requestCloudsyncCredentials({
     }
     const headers: Record<string, string> = {
       Authorization: `Bearer ${accessToken}`,
-      "X-Anarlog-E2EE-Key-Id": encryptionKeyId,
+      "X-Nixo-E2EE-Key-Id": encryptionKeyId,
     };
     if (device.fingerprint) {
       headers[DEVICE_FINGERPRINT_HEADER] = device.fingerprint;

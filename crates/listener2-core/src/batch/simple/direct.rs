@@ -63,7 +63,7 @@ pub(in crate::batch) async fn run_direct_batch_for_adapter_kind(
     params: BatchParams,
     listen_params: owhisper_interface::ListenParams,
 ) -> crate::Result<BatchRunOutput> {
-    if adapter_kind == AdapterKind::Anarlog {
+    if adapter_kind == AdapterKind::Nixo {
         return run_anarlog_batch(params, listen_params).await;
     }
 
@@ -84,7 +84,7 @@ pub(in crate::batch) async fn run_direct_batch_for_adapter_kind(
         ElevenLabs => ElevenLabsAdapter,
         Pyannote => PyannoteAdapter,
         Mistral => MistralAdapter,
-        Anarlog => AnarlogAdapter,
+        Nixo => AnarlogAdapter,
         AquaVoice => AquaVoiceAdapter,
         Cohere => CohereAdapter,
         AwsTranscribe => AwsTranscribeAdapter,
@@ -106,7 +106,7 @@ async fn run_anarlog_batch(
         prepare_anarlog_batch_upload(&params.file_path, ANARLOG_PROXY_MAX_AUDIO_BYTES).await?;
     params.file_path = upload.path().to_string_lossy().into_owned();
     run_direct_batch::<AnarlogAdapter>(
-        &AdapterKind::Anarlog.to_string(),
+        &AdapterKind::Nixo.to_string(),
         params,
         listen_params,
         None,
@@ -130,7 +130,7 @@ pub(super) async fn prepare_anarlog_batch_upload(
         .is_some_and(|extension| extension.eq_ignore_ascii_case("wav"));
     if !is_wav {
         return Err(crate::BatchFailure::DirectRequestFailed {
-            provider: AdapterKind::Anarlog.to_string(),
+            provider: AdapterKind::Nixo.to_string(),
             message:
                 "This recording is too large for cloud transcription. Convert it to MP3 and try again."
                     .to_string(),
@@ -141,8 +141,8 @@ pub(super) async fn prepare_anarlog_batch_upload(
     let temp_dir = tempfile::tempdir().map_err(|error| {
         tracing::error!(%error, "large_batch_audio_temp_dir_failed");
         crate::BatchFailure::DirectRequestFailed {
-            provider: AdapterKind::Anarlog.to_string(),
-            message: "Anarlog couldn't prepare this large recording for transcription.".to_string(),
+            provider: AdapterKind::Nixo.to_string(),
+            message: "Nixo couldn't prepare this large recording for transcription.".to_string(),
         }
     })?;
     let encoded_path = temp_dir.path().join("audio.mp3");
@@ -153,16 +153,16 @@ pub(super) async fn prepare_anarlog_batch_upload(
         .map_err(|error| {
             tracing::error!(%error, "large_batch_audio_encode_task_failed");
             crate::BatchFailure::DirectRequestFailed {
-                provider: AdapterKind::Anarlog.to_string(),
-                message: "Anarlog couldn't prepare this large recording for transcription."
+                provider: AdapterKind::Nixo.to_string(),
+                message: "Nixo couldn't prepare this large recording for transcription."
                     .to_string(),
             }
         })?
         .map_err(|error| {
             tracing::error!(%error, "large_batch_audio_encode_failed");
             crate::BatchFailure::DirectRequestFailed {
-                provider: AdapterKind::Anarlog.to_string(),
-                message: "Anarlog couldn't prepare this large recording for transcription."
+                provider: AdapterKind::Nixo.to_string(),
+                message: "Nixo couldn't prepare this large recording for transcription."
                     .to_string(),
             }
         })?;
@@ -170,7 +170,7 @@ pub(super) async fn prepare_anarlog_batch_upload(
     let encoded_size = tokio::fs::metadata(&encoded_path).await?.len();
     if encoded_size > max_bytes {
         return Err(crate::BatchFailure::DirectRequestFailed {
-            provider: AdapterKind::Anarlog.to_string(),
+            provider: AdapterKind::Nixo.to_string(),
             message:
                 "This recording is too large for cloud transcription. Split it into smaller files and try again."
                     .to_string(),

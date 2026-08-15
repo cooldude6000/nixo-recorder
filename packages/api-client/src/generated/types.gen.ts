@@ -3485,7 +3485,7 @@ export type DeleteAttachmentBackupErrors = {
      */
     401: unknown;
     /**
-     * Anarlog Pro subscription or backup access required
+     * Nixo Pro subscription or backup access required
      */
     403: unknown;
     /**
@@ -3528,7 +3528,7 @@ export type CancelAttachmentBackupDeletionErrors = {
      */
     401: unknown;
     /**
-     * Anarlog Pro subscription or backup access required
+     * Nixo Pro subscription or backup access required
      */
     403: unknown;
     /**
@@ -3567,7 +3567,7 @@ export type DownloadAttachmentBackupErrors = {
      */
     401: unknown;
     /**
-     * Anarlog Pro subscription or backup access required
+     * Nixo Pro subscription or backup access required
      */
     403: unknown;
     /**
@@ -3610,7 +3610,7 @@ export type FinalizeAttachmentBackupErrors = {
      */
     401: unknown;
     /**
-     * Anarlog Pro subscription or backup access required
+     * Nixo Pro subscription or backup access required
      */
     403: unknown;
     /**
@@ -3657,7 +3657,7 @@ export type PromoteAttachmentBackupErrors = {
      */
     401: unknown;
     /**
-     * Anarlog Pro subscription or backup access required
+     * Nixo Pro subscription or backup access required
      */
     403: unknown;
     /**
@@ -3705,7 +3705,7 @@ export type ReadCurrentAttachmentBackupErrors = {
      */
     401: unknown;
     /**
-     * Anarlog Pro subscription or backup access required
+     * Nixo Pro subscription or backup access required
      */
     403: unknown;
     /**
@@ -3744,7 +3744,7 @@ export type ReserveAttachmentBackupErrors = {
      */
     401: unknown;
     /**
-     * Anarlog Pro subscription or backup access required
+     * Nixo Pro subscription or backup access required
      */
     403: unknown;
     /**
@@ -3787,7 +3787,7 @@ export type GrantAttachmentBackupUploadErrors = {
      */
     401: unknown;
     /**
-     * Anarlog Pro subscription or backup access required
+     * Nixo Pro subscription or backup access required
      */
     403: unknown;
     /**
@@ -3830,7 +3830,7 @@ export type ClaimE2EeIdentityErrors = {
      */
     401: unknown;
     /**
-     * Anarlog Pro subscription required
+     * Nixo Pro subscription required
      */
     403: unknown;
     /**
@@ -4115,7 +4115,7 @@ export type PublishSessionShareSnapshotErrors = {
      */
     401: unknown;
     /**
-     * Anarlog Pro or share-manager access required
+     * Nixo Pro or share-manager access required
      */
     403: unknown;
     /**
@@ -4208,7 +4208,7 @@ export type CreateCredentialsErrors = {
      */
     401: unknown;
     /**
-     * Anarlog Pro subscription required
+     * Nixo Pro subscription required
      */
     403: unknown;
     /**
@@ -4592,7 +4592,7 @@ export type DeleteSnapshotData = {
     body?: never;
     path: {
         /**
-         * Anarlog meeting id
+         * Nixo meeting id
          */
         session_id: string;
     };
@@ -4610,7 +4610,7 @@ export type PublishSnapshotData = {
     body: MeetingExport;
     path: {
         /**
-         * Anarlog meeting id
+         * Nixo meeting id
          */
         session_id: string;
     };

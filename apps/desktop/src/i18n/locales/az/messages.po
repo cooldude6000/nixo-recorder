@@ -244,80 +244,80 @@ msgid "Analyzing structure..."
 msgstr ""
 
 #: src/onboarding/permissions.tsx
-msgid "Anarlog can hear others"
+msgid "Nixo can hear others"
 msgstr ""
 
 #: src/onboarding/permissions.tsx
-msgid "Anarlog can hear your voice"
+msgid "Nixo can hear your voice"
 msgstr ""
 
 #: src/onboarding/permissions.tsx
-msgid "Anarlog can read meeting details"
+msgid "Nixo can read meeting details"
 msgstr ""
 
 #: src/session/components/note-input/enhanced/enhance-error.tsx
-msgid "Anarlog could not generate this summary because you were not signed in. Sign in, then try again."
+msgid "Nixo could not generate this summary because you were not signed in. Sign in, then try again."
 msgstr ""
 
 #: src/shared-notes/index.tsx
-msgid "Anarlog could not read the local shared-note cache."
+msgid "Nixo could not read the local shared-note cache."
 msgstr ""
 
 #: src/settings/sync/index.tsx
-msgid "Anarlog could not start cloud sync on this device."
+msgid "Nixo could not start cloud sync on this device."
 msgstr ""
 
 #: src/main/sync-status.tsx
-msgid "Anarlog couldn't read cloud sync status. Your notes are still available locally."
+msgid "Nixo couldn't read cloud sync status. Your notes are still available locally."
 msgstr ""
 
 #: src/settings/general/account.tsx
-msgid "Anarlog couldn't sign you out. Try again."
+msgid "Nixo couldn't sign you out. Try again."
 msgstr ""
 
 #: src/main/sync-status.tsx
-msgid "Anarlog is repairing cloud sync in the background. Your notes remain available locally."
+msgid "Nixo is repairing cloud sync in the background. Your notes remain available locally."
 msgstr ""
 
 #: src/onboarding/index.tsx
-msgid "Anarlog needs access to your microphone and system audio to record and transcribe your meetings"
+msgid "Nixo needs access to your microphone and system audio to record and transcribe your meetings"
 msgstr ""
 
 #: src/onboarding/index.tsx
-msgid "Anarlog needs microphone and system audio to transcribe your meetings, plus Accessibility to read meeting controls, visible chat, and participant status."
+msgid "Nixo needs microphone and system audio to transcribe your meetings, plus Accessibility to read meeting controls, visible chat, and participant status."
 msgstr ""
 
 #: src/main/sync-status.tsx
-msgid "Anarlog Pro is required to use cloud sync."
+msgid "Nixo Pro is required to use cloud sync."
 msgstr ""
 
 #: src/main/sync-status.tsx
-msgid "Anarlog Pro required"
+msgid "Nixo Pro required"
 msgstr ""
 
 #: src/main/sync-status.tsx
-msgid "Anarlog will keep retrying"
+msgid "Nixo will keep retrying"
 msgstr ""
 
 #: src/main/sync-status.tsx
-msgid "Anarlog will keep retrying in the background. Your notes remain available locally."
+msgid "Nixo will keep retrying in the background. Your notes remain available locally."
 msgstr ""
 
 #: src/settings/sync/index.tsx
-msgid "Anarlog will keep retrying."
+msgid "Nixo will keep retrying."
 msgstr ""
 
 #: src/settings/sync/index.tsx
-msgid "Anarlog will retry automatically."
+msgid "Nixo will retry automatically."
 msgstr ""
 
 #: src/main/sync-status.tsx
 #: src/settings/general/storage/legacy-cleanup.tsx
-msgid "Anarlog will retry automatically. This does not affect your notes."
+msgid "Nixo will retry automatically. This does not affect your notes."
 msgstr ""
 
 #: src/onboarding/index.tsx
-msgid "Anarlog will sync your calendar to get meeting reminders"
+msgid "Nixo will sync your calendar to get meeting reminders"
 msgstr ""
 
 #: src/templates/template-icon-picker.tsx
@@ -366,7 +366,7 @@ msgid "Approve"
 msgstr ""
 
 #: src/shared/chat-cta.tsx
-msgid "Ask Anarlog anything"
+msgid "Ask Nixo anything"
 msgstr ""
 
 #: src/chat/components/input/index.tsx
@@ -383,7 +383,7 @@ msgid "Attach Markdown or text"
 msgstr ""
 
 #: src/templates/auto-format-examples-dialog.tsx
-msgid "Attach up to three past summaries you like. Anarlog will learn how you prefer meeting notes to be structured and written."
+msgid "Attach up to three past summaries you like. Nixo will learn how you prefer meeting notes to be structured and written."
 msgstr ""
 
 #: src/settings/general/index.tsx
@@ -396,7 +396,7 @@ msgid "Audio file retention"
 msgstr ""
 
 #: src/instruction/index.tsx
-msgid "Authorize access in your browser, then return to Anarlog."
+msgid "Authorize access in your browser, then return to Nixo."
 msgstr ""
 
 #: src/templates/auto-form.tsx
@@ -490,7 +490,7 @@ msgid "Browser handoff not working? Paste the callback link instead"
 msgstr ""
 
 #: src/settings/dictionary/index.tsx
-msgid "Build a custom dictionary with Anarlog Pro"
+msgid "Build a custom dictionary with Nixo Pro"
 msgstr ""
 
 #: src/settings/general/permissions.tsx
@@ -645,11 +645,11 @@ msgid "Choose folder"
 msgstr ""
 
 #: src/settings/appearance/app-icon.tsx
-msgid "Choose how Anarlog appears in the Dock."
+msgid "Choose how Nixo appears in the Dock."
 msgstr ""
 
 #: src/settings/appearance/theme.tsx
-msgid "Choose how Anarlog looks on this device."
+msgid "Choose how Nixo looks on this device."
 msgstr ""
 
 #: src/templates/auto-form.tsx
@@ -724,7 +724,7 @@ msgid "Cloud sync"
 msgstr ""
 
 #: src/settings/sync/index.tsx
-msgid "Cloud sync and {cloudStorageService} can both change the same files, which can create conflicted copies and incomplete recordings. Move your Anarlog storage location to a folder that {cloudStorageService} does not sync."
+msgid "Cloud sync and {cloudStorageService} can both change the same files, which can create conflicted copies and incomplete recordings. Move your Nixo storage location to a folder that {cloudStorageService} does not sync."
 msgstr ""
 
 #: src/main/sync-status.tsx
@@ -741,7 +741,7 @@ msgid "Cloud sync identity mismatch"
 msgstr ""
 
 #: src/settings/sync/index.tsx
-msgid "Cloud sync is available with Anarlog Pro"
+msgid "Cloud sync is available with Nixo Pro"
 msgstr ""
 
 #: src/auth/cloudsync.ts
@@ -822,7 +822,7 @@ msgid "Compare Free and Pro before you sign in."
 msgstr ""
 
 #: src/instruction/index.tsx
-msgid "Complete sign-in in your browser, then return to Anarlog."
+msgid "Complete sign-in in your browser, then return to Nixo."
 msgstr ""
 
 #: src/instruction/index.tsx
@@ -900,7 +900,7 @@ msgid "Connect your integration"
 msgstr ""
 
 #: src/imports/screen.tsx
-msgid "Connected · New meetings are imported automatically while Anarlog is running."
+msgid "Connected · New meetings are imported automatically while Nixo is running."
 msgstr ""
 
 #: src/main/sync-status.tsx
@@ -926,7 +926,7 @@ msgid "Continuing without trial"
 msgstr ""
 
 #: src/settings/general/meeting-settings.tsx
-msgid "Control listening without reopening Anarlog."
+msgid "Control listening without reopening Nixo."
 msgstr ""
 
 #: src/session/components/note-input/transcript/renderer/selection-menu.tsx
@@ -1275,7 +1275,7 @@ msgid "Enter template title"
 msgstr ""
 
 #: src/settings/general/e2ee-setup.tsx
-msgid "Enter the recovery key from an existing Anarlog device."
+msgid "Enter the recovery key from an existing Nixo device."
 msgstr ""
 
 #: src/settings/ai/shared/index.tsx
@@ -1377,11 +1377,11 @@ msgid "Find a note..."
 msgstr ""
 
 #: src/instruction/index.tsx
-msgid "Finish checkout in your browser, then return to Anarlog."
+msgid "Finish checkout in your browser, then return to Nixo."
 msgstr ""
 
 #: src/settings/general/account.tsx
-msgid "Finish in your browser, then return to Anarlog."
+msgid "Finish in your browser, then return to Nixo."
 msgstr ""
 
 #: src/settings/general/account.tsx
@@ -1437,11 +1437,11 @@ msgid "Generating title..."
 msgstr ""
 
 #: src/settings/general/notification.tsx
-msgid "Get dock attention when transcription finishes while Anarlog is in the background."
+msgid "Get dock attention when transcription finishes while Nixo is in the background."
 msgstr ""
 
 #: src/settings/general/notification.tsx
-msgid "Get dock attention when your summary finishes while Anarlog is in the background."
+msgid "Get dock attention when your summary finishes while Nixo is in the background."
 msgstr ""
 
 #: src/session/components/note-input/enhanced/config-error.tsx
@@ -1483,7 +1483,7 @@ msgid "Got it"
 msgstr ""
 
 #: src/settings/general/app-settings.tsx
-msgid "Have Anarlog ready when you sign in."
+msgid "Have Nixo ready when you sign in."
 msgstr ""
 
 #: src/calendar/components/apple/permission.tsx
@@ -1491,19 +1491,19 @@ msgid "Having trouble?"
 msgstr ""
 
 #: src/onboarding/permissions.tsx
-msgid "Help Anarlog listen to others"
+msgid "Help Nixo listen to others"
 msgstr ""
 
 #: src/onboarding/permissions.tsx
-msgid "Help Anarlog listen to you"
+msgid "Help Nixo listen to you"
 msgstr ""
 
 #: src/onboarding/permissions.tsx
-msgid "Help Anarlog read meeting activity"
+msgid "Help Nixo read meeting activity"
 msgstr ""
 
 #: src/settings/general/app-settings.tsx
-msgid "Help improve Anarlog with anonymous usage data."
+msgid "Help improve Nixo with anonymous usage data."
 msgstr ""
 
 #: src/settings/dictionary/index.tsx
@@ -1541,7 +1541,7 @@ msgid "Icons"
 msgstr ""
 
 #: src/settings/general/account.tsx
-msgid "If Anarlog stays closed, paste the link in the sign-in window."
+msgid "If Nixo stays closed, paste the link in the sign-in window."
 msgstr ""
 
 #: src/onboarding/index.tsx
@@ -1586,7 +1586,7 @@ msgid "Insert below"
 msgstr ""
 
 #: src/settings/sync/index.tsx
-msgid "Install Anarlog and sign in with this account on the new device. Choose “Use an existing key” when prompted, then enter your saved recovery key."
+msgid "Install Nixo and sign in with this account on the new device. Choose “Use an existing key” when prompted, then enter your saved recovery key."
 msgstr ""
 
 #: src/settings/ai/llm/index.tsx
@@ -1759,7 +1759,7 @@ msgid "Low-light canvas"
 msgstr ""
 
 #: src/settings/ai/shared/index.tsx
-msgid "macOS cannot access your login Keychain. Repairing briefly locks it and asks for your Mac password before Anarlog retries this API key."
+msgid "macOS cannot access your login Keychain. Repairing briefly locks it and asks for your Mac password before Nixo retries this API key."
 msgstr ""
 
 #: src/settings/sync/index.tsx
@@ -2031,7 +2031,7 @@ msgid "No page selected yet."
 msgstr ""
 
 #: src/settings/automations/starter-config.tsx
-msgid "No pages found. Share the page with the Anarlog integration in Notion first."
+msgid "No pages found. Share the page with the Nixo integration in Notion first."
 msgstr ""
 
 #: src/session/components/note-input/transcript/renderer/speaker-assign.tsx
@@ -2154,11 +2154,11 @@ msgid "Open {0} settings"
 msgstr ""
 
 #: src/onboarding/final.tsx
-msgid "Open Anarlog"
+msgid "Open Nixo"
 msgstr ""
 
 #: src/settings/general/app-settings.tsx
-msgid "Open Anarlog from the menu bar."
+msgid "Open Nixo from the menu bar."
 msgstr ""
 
 #: src/sidebar/timeline/index.tsx
@@ -2210,12 +2210,12 @@ msgstr ""
 
 #. placeholder {0}: accessibilityGuidance.paneTitle ?? "Privacy"
 #: src/onboarding/permissions.tsx
-msgid "Opens System Settings and guides you to add Anarlog to the {0} list"
+msgid "Opens System Settings and guides you to add Nixo to the {0} list"
 msgstr ""
 
 #. placeholder {0}: accessibilityGuidance.paneTitle ?? "Privacy"
 #: src/settings/general/permissions.tsx
-msgid "Opens System Settings and guides you to add Anarlog to the {0} list."
+msgid "Opens System Settings and guides you to add Nixo to the {0} list."
 msgstr ""
 
 #: src/calendar/components/apple/permission.tsx
@@ -2245,7 +2245,7 @@ msgid "Paste a past summary you like..."
 msgstr ""
 
 #: src/instruction/index.tsx
-msgid "Paste the browser URL here if the browser button did not reopen Anarlog."
+msgid "Paste the browser URL here if the browser button did not reopen Nixo."
 msgstr ""
 
 #: src/settings/general/notification.tsx
@@ -2654,7 +2654,7 @@ msgid "Search or type owner/repo"
 msgstr ""
 
 #: src/settings/automations/starter-config.tsx
-msgid "Search pages shared with Anarlog…"
+msgid "Search pages shared with Nixo…"
 msgstr ""
 
 #: src/settings/ai/shared/provider-search.tsx
@@ -2747,7 +2747,7 @@ msgid "Send message"
 msgstr ""
 
 #: src/settings/privacy/index.tsx
-msgid "Send sanitized crash and error reports to help improve Anarlog."
+msgid "Send sanitized crash and error reports to help improve Nixo."
 msgstr ""
 
 #: src/automations/starters.tsx
@@ -2879,7 +2879,7 @@ msgid "Show All Recurring Events"
 msgstr ""
 
 #: src/settings/general/app-settings.tsx
-msgid "Show Anarlog in the Dock and app switcher."
+msgid "Show Nixo in the Dock and app switcher."
 msgstr ""
 
 #: src/settings/general/app-settings.tsx
@@ -2887,7 +2887,7 @@ msgid "Show app in Dock"
 msgstr ""
 
 #: src/settings/general/permissions.tsx
-msgid "Show Apple Calendar events in Anarlog."
+msgid "Show Apple Calendar events in Nixo."
 msgstr ""
 
 #: src/sidebar/timeline/index.tsx
@@ -2953,7 +2953,7 @@ msgid "Sign in for Pro"
 msgstr ""
 
 #: src/settings/general/account.tsx
-msgid "Sign in to Anarlog"
+msgid "Sign in to Nixo"
 msgstr ""
 
 #: src/imports/screen.tsx
@@ -2999,7 +2999,7 @@ msgid "Sign out and sign in again to resume cloud sync."
 msgstr ""
 
 #: src/settings/general/account.tsx
-msgid "Sign out of Anarlog?"
+msgid "Sign out of Nixo?"
 msgstr ""
 
 #: src/onboarding/account/after-login.tsx
@@ -3062,7 +3062,7 @@ msgid "Start a Pro trial or add your own LLM API key to generate a summary from 
 msgstr ""
 
 #: src/settings/general/app-settings.tsx
-msgid "Start Anarlog at login"
+msgid "Start Nixo at login"
 msgstr "Giriş zamanı Analoqu başladın"
 
 #: src/settings/automations/index.tsx
@@ -3102,7 +3102,7 @@ msgid "Starting your trial..."
 msgstr ""
 
 #: src/settings/general/app-settings.tsx
-msgid "Stay current with updates installed the next time Anarlog opens."
+msgid "Stay current with updates installed the next time Nixo opens."
 msgstr ""
 
 #: src/settings/automations/index.tsx
@@ -3305,7 +3305,7 @@ msgid "The note may have been unshared or moved out of a workspace you can acces
 msgstr ""
 
 #: src/auth/context.tsx
-msgid "The notes on this device are linked to another Anarlog account. Sign in with the account previously used here."
+msgid "The notes on this device are linked to another Nixo account. Sign in with the account previously used here."
 msgstr ""
 
 #: src/settings/appearance/theme.tsx
@@ -3333,7 +3333,7 @@ msgid "This device's sync identity does not match your account. Sign in again or
 msgstr ""
 
 #: src/session/components/outer-header/index.tsx
-msgid "This is a prerecorded demo, so your camera stays off. Click Join & record to see Anarlog in action."
+msgid "This is a prerecorded demo, so your camera stays off. Click Join & record to see Nixo in action."
 msgstr ""
 
 #: src/chat/components/session-provider.tsx
@@ -3359,7 +3359,7 @@ msgid "Tip: Add teammate names, acronyms, company jargon, and product terms."
 msgstr ""
 
 #: src/session/components/note-input/enhanced/streaming.tsx
-msgid "Tip: The Anarlog team loves our users!"
+msgid "Tip: The Nixo team loves our users!"
 msgstr ""
 
 #: src/settings/general/spoken-languages.tsx
@@ -3412,7 +3412,7 @@ msgid "Turn assigned follow-ups into Linear issue drafts."
 msgstr ""
 
 #: src/calendar/components/apple/permission.tsx
-msgid "Turn on Anarlog in System Settings → Privacy & Security → Calendars, then return here."
+msgid "Turn on Nixo in System Settings → Privacy & Security → Calendars, then return here."
 msgstr ""
 
 #: src/settings/sync/index.tsx
@@ -3432,7 +3432,7 @@ msgid "Unlock sync"
 msgstr ""
 
 #: src/settings/ai/shared/index.tsx
-msgid "Unlock your login Keychain in the macOS prompt. Anarlog will retry saving this API key automatically."
+msgid "Unlock your login Keychain in the macOS prompt. Nixo will retry saving this API key automatically."
 msgstr ""
 
 #: src/contacts/details.tsx
@@ -3597,7 +3597,7 @@ msgid "Week starts on"
 msgstr ""
 
 #: src/onboarding/index.tsx
-msgid "Welcome to Anarlog"
+msgid "Welcome to Nixo"
 msgstr ""
 
 #: src/changelog/index.tsx
@@ -3682,7 +3682,7 @@ msgid "Your notes remain available locally. Try again in a moment."
 msgstr ""
 
 #: src/settings/general/e2ee-setup.tsx
-msgid "Your recovery key encrypts synced notes before they leave this device. Anarlog cannot read or recover it."
+msgid "Your recovery key encrypts synced notes before they leave this device. Nixo cannot read or recover it."
 msgstr ""
 
 #: src/settings/sync/index.tsx

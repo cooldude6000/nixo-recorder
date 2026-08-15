@@ -54,7 +54,7 @@ export function CloudApiSection() {
       });
       if (backfillFailed) {
         sonnerToast.error(
-          "Cloud API enabled, but existing meetings could not be uploaded. Anarlog will retry.",
+          "Cloud API enabled, but existing meetings could not be uploaded. Nixo will retry.",
         );
       } else if (settings.enabled) {
         sonnerToast.success(
@@ -80,7 +80,7 @@ export function CloudApiSection() {
           <div className="min-w-0">
             <h3 className="text-sm font-medium">Hosted access for agents</h3>
             <p className="text-muted-foreground mt-1 text-sm leading-5">
-              Give remote agents meeting context while Anarlog is closed.
+              Give remote agents meeting context while Nixo is closed.
             </p>
             <p className="text-muted-foreground mt-2 text-xs leading-5">
               Enabling this uploads a separate server-readable copy of meeting

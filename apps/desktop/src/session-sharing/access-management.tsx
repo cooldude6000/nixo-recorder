@@ -311,7 +311,7 @@ export function AccessEntryRow({
   contactName?: string;
   onMutate: (mutation: AccessMutation) => void;
 }) {
-  const label = contactName || entry.userEmail || "Anarlog user";
+  const label = contactName || entry.userEmail || "Nixo user";
   return (
     <div className="hover:bg-accent/50 flex min-h-9 items-center gap-2 rounded-lg px-1.5 py-1">
       <ContactFacehash name={label} size={24} />
@@ -321,7 +321,7 @@ export function AccessEntryRow({
           {contactName && entry.userEmail
             ? entry.userEmail
             : entry.entryType === "grant"
-              ? "Anarlog member"
+              ? "Nixo member"
               : entry.entryType === "invitation"
                 ? "Invitation pending"
                 : `Requested ${capabilityLabels[entry.capability].toLowerCase()}`}

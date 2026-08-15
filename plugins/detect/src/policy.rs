@@ -18,7 +18,7 @@ pub enum SkipReason {
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum AppCategory {
-    Anarlog,
+    Nixo,
     Dictation,
     IDE,
     ScreenRecording,
@@ -29,7 +29,7 @@ pub enum AppCategory {
 impl AppCategory {
     pub fn bundle_ids(&self) -> &'static [&'static str] {
         match self {
-            Self::Anarlog => &[
+            Self::Nixo => &[
                 "com.hyprnote.dev",
                 "com.hyprnote.stable",
                 "com.hyprnote.nightly",
@@ -84,7 +84,7 @@ impl AppCategory {
 
     pub fn all() -> &'static [AppCategory] {
         &[
-            Self::Anarlog,
+            Self::Nixo,
             Self::Dictation,
             Self::IDE,
             Self::ScreenRecording,
@@ -221,7 +221,7 @@ mod tests {
     fn test_app_category_find() {
         assert_eq!(
             AppCategory::find_category("com.hyprnote.dev"),
-            Some(AppCategory::Anarlog)
+            Some(AppCategory::Nixo)
         );
         assert_eq!(AppCategory::find_category("com.zoom.us"), None);
     }
@@ -261,7 +261,7 @@ mod tests {
     #[test]
     fn test_app_category_all_returns_every_variant() {
         let all = AppCategory::all();
-        assert!(all.contains(&AppCategory::Anarlog));
+        assert!(all.contains(&AppCategory::Nixo));
         assert!(all.contains(&AppCategory::Dictation));
         assert!(all.contains(&AppCategory::IDE));
         assert!(all.contains(&AppCategory::ScreenRecording));

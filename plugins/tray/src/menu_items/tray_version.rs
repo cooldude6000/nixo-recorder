@@ -14,8 +14,8 @@ impl TrayVersion {
             "com.hyprnote.staging" => "staging",
             "com.hyprnote.dev" => "dev",
             _ => match app_name {
-                "Anarlog" | "Char" | "Hyprnote" => "stable",
-                "Anarlog Staging" | "Char Staging" | "Hyprnote Staging" => "staging",
+                "Nixo" | "Char" | "Hyprnote" => "stable",
+                "Nixo Staging" | "Char Staging" | "Hyprnote Staging" => "staging",
                 _ => "dev",
             },
         }
@@ -46,26 +46,26 @@ mod tests {
     #[test]
     fn gets_channel_from_identifier() {
         assert_eq!(
-            TrayVersion::get_channel("com.hyprnote.stable", "Anarlog"),
+            TrayVersion::get_channel("com.hyprnote.stable", "Nixo"),
             "stable"
         );
         assert_eq!(
-            TrayVersion::get_channel("com.hyprnote.staging", "Anarlog Staging"),
+            TrayVersion::get_channel("com.hyprnote.staging", "Nixo Staging"),
             "staging"
         );
         assert_eq!(
-            TrayVersion::get_channel("com.hyprnote.dev", "Anarlog Dev"),
+            TrayVersion::get_channel("com.hyprnote.dev", "Nixo Dev"),
             "dev"
         );
     }
 
     #[test]
     fn falls_back_to_product_name_for_unknown_identifier() {
-        assert_eq!(TrayVersion::get_channel("unknown", "Anarlog"), "stable");
+        assert_eq!(TrayVersion::get_channel("unknown", "Nixo"), "stable");
         assert_eq!(
-            TrayVersion::get_channel("unknown", "Anarlog Staging"),
+            TrayVersion::get_channel("unknown", "Nixo Staging"),
             "staging"
         );
-        assert_eq!(TrayVersion::get_channel("unknown", "Anarlog Dev"), "dev");
+        assert_eq!(TrayVersion::get_channel("unknown", "Nixo Dev"), "dev");
     }
 }

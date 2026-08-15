@@ -125,7 +125,7 @@ fn ui_content(deep_link: &DeepLink) -> (bool, &'static str, &'static str) {
         DeepLink::OnboardingDemoComplete(_) => (
             true,
             "Demo complete",
-            "Anarlog is finishing your transcript and creating your summary.",
+            "Nixo is finishing your transcript and creating your summary.",
         ),
     }
 }

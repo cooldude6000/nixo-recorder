@@ -323,7 +323,7 @@ export function MeetingImportScreen({
                         {connected ? (
                           <Trans>
                             Connected · New meetings are imported automatically
-                            while Anarlog is running.
+                            while Nixo is running.
                           </Trans>
                         ) : (
                           <Trans>

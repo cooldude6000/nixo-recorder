@@ -95,7 +95,7 @@ export function useStartListening(sessionId: string) {
         );
       }
       sonnerToast.error(
-        "Anarlog could not safely start recording. Please try again.",
+        "Nixo could not safely start recording. Please try again.",
         { id: "capture-state-persist-failed" },
       );
       return;
@@ -128,7 +128,7 @@ export function useStartListening(sessionId: string) {
         );
       }
       sonnerToast.error(
-        "Anarlog could not safely start recording. Please try again.",
+        "Nixo could not safely start recording. Please try again.",
         { id: "capture-state-persist-failed" },
       );
       return;
@@ -171,7 +171,7 @@ export function useStartListening(sessionId: string) {
         await lifecycle.releaseCloudsyncLease();
       }
       sonnerToast.error(
-        "Anarlog could not safely start recording. Please try again.",
+        "Nixo could not safely start recording. Please try again.",
         { id: "capture-state-persist-failed" },
       );
       return;
@@ -187,7 +187,7 @@ export function useStartListening(sessionId: string) {
       } catch (error) {
         console.error("[listener] failed to clean up capture state", error);
         sonnerToast.error(
-          "Anarlog could not safely start recording. Please try again.",
+          "Nixo could not safely start recording. Please try again.",
           { id: "capture-state-persist-failed" },
         );
       } finally {

@@ -1,8 +1,8 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "Anarlog Dev",
-  "mainBinaryName": "anarlog-dev",
-  "identifier": "com.hyprnote.dev",
+  "productName": "Nixo Recorder",
+  "mainBinaryName": "nixo-recorder",
+  "identifier": "com.withnixo.recorder",
   "build": {
     "beforeDevCommand": "pnpm -F desktop dev",
     "devUrl": "http://localhost:1422",
@@ -24,9 +24,9 @@
     }
   },
   "bundle": {
-    "publisher": "Fastrepl",
+    "publisher": "Nixo",
     "active": true,
-    "createUpdaterArtifacts": true,
+    "createUpdaterArtifacts": false,
     "targets": "all",
     "linux": {
       "deb": {
@@ -97,9 +97,7 @@
     "deep-link": {
       "desktop": {
         "schemes": [
-          "anarlog-dev",
-          "hypr",
-          "char"
+          "nixo-recorder"
         ]
       }
     },

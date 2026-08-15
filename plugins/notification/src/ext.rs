@@ -395,7 +395,7 @@ mod tests {
 
     #[test]
     fn development_windows_notifications_use_the_fallback_app_id() {
-        let executable = Path::new("C:/Users/anarlog/Anarlog.exe");
+        let executable = Path::new("C:/Users/anarlog/Nixo.exe");
 
         assert_eq!(
             windows_app_id("com.hyprnote.dev", true, Some(executable)),
@@ -408,7 +408,7 @@ mod tests {
         for profile in ["debug", "release"] {
             let executable = Path::new("C:/repo/target")
                 .join(profile)
-                .join("Anarlog.exe");
+                .join("Nixo.exe");
 
             assert_eq!(
                 windows_app_id("com.hyprnote.dev", false, Some(&executable)),
@@ -423,7 +423,7 @@ mod tests {
             let executable = Path::new("C:/repo/target")
                 .join("x86_64-pc-windows-msvc")
                 .join(profile)
-                .join("Anarlog.exe");
+                .join("Nixo.exe");
 
             assert_eq!(
                 windows_app_id("com.hyprnote.dev", false, Some(&executable)),
@@ -434,7 +434,7 @@ mod tests {
 
     #[test]
     fn installed_windows_notifications_use_the_configured_app_id() {
-        let executable = Path::new("C:/Users/anarlog/AppData/Local/Anarlog/Anarlog.exe");
+        let executable = Path::new("C:/Users/anarlog/AppData/Local/Nixo/Nixo.exe");
 
         assert_eq!(
             windows_app_id("com.hyprnote.stable", false, Some(executable)),

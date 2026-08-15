@@ -761,7 +761,7 @@ mod tests {
     #[test]
     fn batch_idle_timeout_skips_direct_cloud_batch() {
         let params = transcription_params(
-            core::BatchProvider::Anarlog,
+            core::BatchProvider::Nixo,
             "https://api.char.com/stt",
             None,
         );

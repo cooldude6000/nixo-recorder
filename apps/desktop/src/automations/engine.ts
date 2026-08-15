@@ -216,8 +216,8 @@ async function runLinearIssues(sessionId: string): Promise<void> {
       const connectionId = await findConnectionId(client, "linear");
       const recap = await loadMeetingRecap(sessionId);
       const description = recap
-        ? `Action item from the Anarlog meeting "${recap.title}" (${recap.date}).`
-        : "Action item from an Anarlog meeting.";
+        ? `Action item from the Nixo meeting "${recap.title}" (${recap.date}).`
+        : "Action item from an Nixo meeting.";
       const items = actionItems.slice(0, MAX_LINEAR_ISSUES_PER_MEETING);
       // Mark the session processed before creating anything: a mid-loop
       // failure must not re-create the earlier issues on the next enhance.

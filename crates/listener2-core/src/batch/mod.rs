@@ -35,7 +35,7 @@ pub enum BatchProvider {
     DashScope,
     Mistral,
     #[serde(alias = "hyprnote")]
-    Anarlog,
+    Nixo,
     Am,
     Soniqo,
     AppleSpeech,
@@ -74,7 +74,7 @@ impl BatchProvider {
             Self::ElevenLabs => Some(AdapterKind::ElevenLabs),
             Self::Pyannote => Some(AdapterKind::Pyannote),
             Self::Mistral => Some(AdapterKind::Mistral),
-            Self::Anarlog => Some(AdapterKind::Anarlog),
+            Self::Nixo => Some(AdapterKind::Nixo),
             Self::AquaVoice => Some(AdapterKind::AquaVoice),
             Self::Cartesia => Some(AdapterKind::Cartesia),
             Self::Cohere => Some(AdapterKind::Cohere),
@@ -455,7 +455,7 @@ mod tests {
 
     #[test]
     fn cloud_anarlog_batch_is_not_progressive() {
-        let params = batch_params(BatchProvider::Anarlog, "https://api.char.com/stt");
+        let params = batch_params(BatchProvider::Nixo, "https://api.char.com/stt");
 
         assert!(!expects_progressive_batch(&params));
     }

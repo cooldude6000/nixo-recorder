@@ -35,7 +35,7 @@ export async function showSummaryReadyNotification(
       start_time: null,
       participants: null,
       event_details: null,
-      action_label: "Open Anarlog",
+      action_label: "Open Nixo",
       action_variant: null,
       options: null,
       footer: null,
