@@ -12,12 +12,11 @@ export type OnboardingStep =
 
 const STEPS_MACOS: OnboardingStep[] = [
   "permissions",
-  "login",
   "calendar",
   "imports",
   "final",
 ];
-const STEPS_OTHER: OnboardingStep[] = ["login", "calendar", "imports", "final"];
+const STEPS_OTHER: OnboardingStep[] = ["calendar", "imports", "final"];
 
 function getOnboardingSteps(): OnboardingStep[] {
   return platform() === "macos" ? STEPS_MACOS : STEPS_OTHER;
