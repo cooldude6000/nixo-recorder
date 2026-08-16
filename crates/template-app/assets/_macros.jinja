@@ -117,7 +117,7 @@ Sections:
 {% for section in tpl.sections -%}
 {{ loop.index }}. {{ section.title }}{% if section.description.is_some() %} - {{ section.description.as_ref().unwrap() }}{% endif %}
 {% endfor %}
-Use every section in order with its exact title. Keep sections without relevant content brief instead of inventing details.
+Include only the sections that have supporting content from the conversation, keeping their exact titles and relative order. Omit any section with nothing to report entirely — no headers with placeholder bullets like "Not discussed" or "Nothing pending". Never invent details to fill a section.
 {%- when None %}
 
 # Instructions
