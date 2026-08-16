@@ -55,6 +55,13 @@ pub struct Icon<'a, R: tauri::Runtime, M: tauri::Manager<R>> {
 
 impl<'a, R: tauri::Runtime, M: tauri::Manager<R>> Icon<'a, R, M> {
     pub fn set_dock_icon(&self, name: String) -> Result<(), crate::Error> {
+        // Nixo fork: never override the Dock icon at runtime. The bundle
+        // AppIcon gets the macOS 26 system icon treatment; a runtime-set
+        // NSImage renders flat and mismatched. One brand, no switching.
+        let _ = name;
+        #[allow(unreachable_code)]
+        return Ok(());
+
         #[cfg(target_os = "macos")]
         {
             use std::path::PathBuf;
