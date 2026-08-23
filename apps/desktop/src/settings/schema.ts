@@ -224,6 +224,7 @@ export const SETTING_DEFINITIONS = {
   selected_template_id: {
     type: "string",
     path: ["general", "selected_template_id"],
+    default: "default-nixo-fde" as string,
   },
   todo_linear_filter: {
     type: "string",
