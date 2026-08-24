@@ -8,6 +8,8 @@ on:
 jobs:
   build:
     runs-on: macos-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
 
@@ -48,3 +50,10 @@ jobs:
           name: nixo-recorder-macos-arm64
           path: apps/desktop/src-tauri/target/release/bundle/dmg/*.dmg
           if-no-files-found: error
+
+      - name: Publish GitHub release with dmg
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TAG="build-${{ github.run_number }}"
+          gh release create "$TAG" --title "Nixo Recorder $TAG"             --notes "Unsigned CI build. Sign locally before install."             apps/desktop/src-tauri/target/release/bundle/dmg/*.dmg ||           gh release upload "$TAG" apps/desktop/src-tauri/target/release/bundle/dmg/*.dmg --clobber
