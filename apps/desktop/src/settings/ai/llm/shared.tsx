@@ -56,9 +56,17 @@ export type Provider = {
 
 const _PROVIDERS = [
   {
-    id: "anarlog",
+    id: "nixo",
     displayName: "Nixo",
     badge: "Recommended",
+    icon: <AnarlogProviderIcon />,
+    baseUrl: new URL("/api/recorder/llm/v1", env.VITE_NIXO_API_URL).toString(),
+    requirements: [],
+  },
+  {
+    id: "anarlog",
+    displayName: "Nixo Cloud",
+    badge: null,
     icon: <AnarlogProviderIcon />,
     baseUrl: new URL("/llm", env.VITE_API_URL).toString(),
     requirements: [
@@ -478,6 +486,7 @@ const _PROVIDERS = [
 ] as const satisfies readonly Provider[];
 
 const PROVIDER_ORDER = [
+  "nixo",
   "openai",
   "anthropic",
   "google_generative_ai",

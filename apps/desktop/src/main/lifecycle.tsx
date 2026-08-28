@@ -10,6 +10,7 @@ import { buildChatTools } from "~/chat/tools";
 import { CloudApiBackfillLifecycle } from "~/cloud-api/lifecycle";
 import { searchContacts } from "~/contacts/queries";
 import { useRegisterTools } from "~/contexts/tool";
+import { refreshNixoSttKey } from "~/nixo/provision";
 import { takePendingWelcomeSession } from "~/onboarding/welcome-note";
 import { useSearchEngine } from "~/search/contexts/engine";
 import { initEnhancerService } from "~/services/enhancer";
@@ -59,8 +60,25 @@ export function ClassicMainServices() {
       <MainListenerControlBridge />
       <ToolRegistration />
       <EnhancerInit />
+      <NixoSttKeyRefresh />
     </>
   );
+}
+
+// Nixo-minted Deepgram keys expire after 24h; re-mint on launch and every
+// 6h so a laptop that sleeps through the TTL still transcribes. No-op when
+// not signed in, and never touches the user's STT provider selection.
+function NixoSttKeyRefresh() {
+  useEffect(() => {
+    void refreshNixoSttKey();
+    const interval = setInterval(
+      () => void refreshNixoSttKey(),
+      6 * 60 * 60 * 1000,
+    );
+    return () => clearInterval(interval);
+  }, []);
+
+  return null;
 }
 
 function ToolRegistration() {

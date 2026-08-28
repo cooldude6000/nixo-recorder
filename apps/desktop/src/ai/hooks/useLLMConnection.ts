@@ -18,6 +18,7 @@ import { createTracedFetch, tracedFetch } from "../traced-fetch";
 import { useAuth } from "~/auth";
 import { useBillingAccess } from "~/auth/billing-context";
 import { env } from "~/env";
+import { getNixoAccessToken } from "~/nixo/auth";
 import { type ProviderId, PROVIDERS } from "~/settings/ai/llm/shared";
 import {
   getProviderSelectionBlockers,
@@ -248,6 +249,24 @@ const createLanguageModel = (
         apiKey: conn.apiKey,
       });
       return wrapWithThinkingMiddleware(provider.chat(conn.modelId));
+    }
+
+    case "nixo": {
+      // The relay authenticates with the Nixo session token, resolved at
+      // fetch time so an enhancement hours after sign-in still sends a
+      // fresh (auto-refreshed) token instead of a stale stored key.
+      const nixoFetch: typeof fetch = async (input, init) => {
+        const headers = new Headers(init?.headers);
+        const token = await getNixoAccessToken();
+        if (token) headers.set("Authorization", `Bearer ${token}`);
+        return tauriFetch(input as RequestInfo | URL, { ...init, headers });
+      };
+      const provider = createOpenAICompatible({
+        fetch: nixoFetch,
+        name: "nixo",
+        baseURL: conn.baseUrl,
+      });
+      return wrapWithThinkingMiddleware(provider.chatModel(conn.modelId));
     }
 
     case "anthropic": {

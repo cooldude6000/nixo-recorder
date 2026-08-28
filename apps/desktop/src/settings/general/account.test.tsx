@@ -9,55 +9,36 @@ import {
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 const mocks = vi.hoisted(() => ({
-  analyticsEvent: vi.fn(() => Promise.resolve()),
-  analyticsSetProperties: vi.fn(() => Promise.resolve()),
-  signIn: vi.fn(() => Promise.resolve()),
-  signOut: vi.fn(() => Promise.resolve()),
-  buildWebAppUrl: vi.fn(() => Promise.resolve("https://anarlog.so/app/portal")),
-  billing: {
-    canStartTrial: { data: false, isPending: false },
-    hasPaymentMethod: false,
-    isPaid: false,
-    isTrialing: false,
-    plan: "free",
-    trialDaysRemaining: null as number | null,
-  },
+  getNixoSession: vi.fn<() => Promise<unknown>>(() => Promise.resolve(null)),
+  signOutOfNixo: vi.fn(() => Promise.resolve()),
+  disableNixoWebhooks: vi.fn(() => Promise.resolve()),
+  provisionNixo: vi.fn(() => Promise.resolve()),
+  callOrder: [] as string[],
 }));
 
-vi.mock("@anlg/plugin-analytics", () => ({
-  commands: {
-    event: mocks.analyticsEvent,
-    setProperties: mocks.analyticsSetProperties,
-  },
+vi.mock("~/nixo/auth", () => ({
+  NIXO_SESSION_QUERY_KEY: ["nixo-session"],
+  getNixoSession: mocks.getNixoSession,
+  signOutOfNixo: mocks.signOutOfNixo,
 }));
 
-vi.mock("@anlg/plugin-opener2", () => ({
-  commands: { openUrl: vi.fn() },
+vi.mock("~/nixo/provision", () => ({
+  disableNixoWebhooks: mocks.disableNixoWebhooks,
+  provisionNixo: mocks.provisionNixo,
 }));
 
-vi.mock("@anlg/plugin-windows", () => ({
-  openUrlWithInstruction: vi.fn(),
-}));
-
-vi.mock("~/auth", () => ({
-  useAuth: () => ({
-    isRefreshingSession: false,
-    refreshSession: vi.fn(),
-    session: { user: { email: "john@example.com" } },
-    signIn: mocks.signIn,
-    signOut: mocks.signOut,
-  }),
-}));
-
-vi.mock("~/auth/billing-context", () => ({
-  useBillingAccess: () => mocks.billing,
-}));
-
-vi.mock("~/shared/utils", () => ({
-  buildWebAppUrl: mocks.buildWebAppUrl,
+vi.mock("~/nixo/login-form", () => ({
+  NixoLoginForm: () => <div data-testid="nixo-login-form" />,
 }));
 
 import { SettingsAccount } from "./account";
+
+const SESSION = {
+  access_token: "at",
+  refresh_token: "rt",
+  expires_at: 4102444800,
+  user: { id: "u1", email: "stephanie@withnixo.com" },
+};
 
 const renderAccount = () => {
   const queryClient = new QueryClient({
@@ -77,94 +58,53 @@ const renderAccount = () => {
 describe("SettingsAccount", () => {
   beforeEach(() => {
     vi.clearAllMocks();
-    mocks.billing = {
-      canStartTrial: { data: false, isPending: false },
-      hasPaymentMethod: false,
-      isPaid: false,
-      isTrialing: false,
-      plan: "free",
-      trialDaysRemaining: null,
-    };
-    globalThis.ResizeObserver = class {
-      observe() {}
-      unobserve() {}
-      disconnect() {}
-    } as typeof ResizeObserver;
+    mocks.callOrder.length = 0;
+    mocks.signOutOfNixo.mockImplementation(() => {
+      mocks.callOrder.push("signOut");
+      return Promise.resolve();
+    });
+    mocks.disableNixoWebhooks.mockImplementation(() => {
+      mocks.callOrder.push("disableWebhooks");
+      return Promise.resolve();
+    });
   });
 
   afterEach(cleanup);
 
-  it("confirms sign-out before ending the session", async () => {
+  it("shows the sign-in form when signed out", async () => {
+    mocks.getNixoSession.mockResolvedValue(null);
+
     renderAccount();
 
-    fireEvent.click(screen.getByRole("button", { name: "Sign out" }));
-
-    expect(mocks.signOut).not.toHaveBeenCalled();
-    expect(
-      screen.getByRole("heading", { name: "Sign out of Nixo?" }),
-    ).toBeTruthy();
-    expect(screen.getByRole("dialog").className).toContain("max-w-[320px]");
-
-    fireEvent.click(screen.getByRole("button", { name: "Cancel" }));
-
-    expect(mocks.signOut).not.toHaveBeenCalled();
-    expect(screen.queryByRole("dialog")).toBeNull();
-
-    fireEvent.click(screen.getByRole("button", { name: "Sign out" }));
-    const signOutButtons = screen.getAllByRole("button", { name: "Sign out" });
-    fireEvent.click(signOutButtons[signOutButtons.length - 1]!);
-
-    await waitFor(() => expect(mocks.signOut).toHaveBeenCalledOnce());
-    expect(mocks.analyticsEvent).toHaveBeenCalledWith({
-      event: "user_signed_out",
-    });
+    expect(await screen.findByTestId("nixo-login-form")).toBeTruthy();
+    expect(screen.queryByRole("button", { name: "Sign out" })).toBeNull();
   });
 
-  it("offers to add a payment method during a cardless trial", async () => {
-    mocks.billing = {
-      canStartTrial: { data: false, isPending: false },
-      hasPaymentMethod: false,
-      isPaid: true,
-      isTrialing: true,
-      plan: "trial",
-      trialDaysRemaining: 3,
-    };
+  it("pauses webhook delivery before clearing the session on sign-out", async () => {
+    // WHY: a signed-out recorder must not keep shipping meetings to the
+    // dashboard, and the webhook pause has to land while we still can act —
+    // clearing the session first and then failing would leave delivery live.
+    mocks.getNixoSession.mockResolvedValue(SESSION);
 
     renderAccount();
 
-    expect(screen.queryByText("Cancel")).toBeNull();
+    fireEvent.click(await screen.findByRole("button", { name: "Sign out" }));
 
-    fireEvent.click(screen.getByRole("button", { name: "Add payment method" }));
+    await waitFor(() => expect(mocks.signOutOfNixo).toHaveBeenCalledOnce());
+    expect(mocks.callOrder).toEqual(["disableWebhooks", "signOut"]);
+  });
 
-    await waitFor(() =>
-      expect(mocks.buildWebAppUrl).toHaveBeenCalledWith("/app/portal", {
-        intent: "payment_method_update",
-      }),
+  it("re-runs the full provisioning from the settings page", async () => {
+    // WHY: this is the recovery path when webhook/STT/LLM wiring breaks
+    // without a fresh sign-in (e.g. backend secret reset).
+    mocks.getNixoSession.mockResolvedValue(SESSION);
+
+    renderAccount();
+
+    fireEvent.click(
+      await screen.findByRole("button", { name: "Re-run setup" }),
     );
-    expect(mocks.analyticsEvent).toHaveBeenCalledWith({
-      event: "trial_payment_method_clicked",
-      days_remaining: 3,
-      source: "settings",
-    });
-  });
 
-  it("renders the current plan as status once the trial has a payment method", () => {
-    mocks.billing = {
-      canStartTrial: { data: false, isPending: false },
-      hasPaymentMethod: true,
-      isPaid: true,
-      isTrialing: true,
-      plan: "trial",
-      trialDaysRemaining: 3,
-    };
-
-    renderAccount();
-
-    expect(
-      screen.queryByRole("button", { name: "Add payment method" }),
-    ).toBeNull();
-    expect(screen.getByText("Current plan")).toBeTruthy();
-    expect(screen.queryByText("Cancel")).toBeNull();
-    expect(screen.queryByRole("button", { name: /Current plan/ })).toBeNull();
+    await waitFor(() => expect(mocks.provisionNixo).toHaveBeenCalledOnce());
   });
 });

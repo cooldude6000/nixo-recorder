@@ -21,6 +21,8 @@ import { ImportSection } from "./imports";
 import { PermissionsSection } from "./permissions";
 import { OnboardingSection } from "./shared";
 
+import { NixoLoginForm } from "~/nixo/login-form";
+
 import { trackAnalyticsEvent } from "~/analytics";
 import { StandaloneWindowShell } from "~/shared/window-shell";
 import { type Tab, useTabs } from "~/store/zustand/tabs";
@@ -242,6 +244,24 @@ function OnboardingScreenContent({
             onNext={goNext}
           >
             <PermissionsSection onContinue={goNext} />
+          </OnboardingSection>
+
+          <OnboardingSection
+            title={<Trans>Sign in to Nixo</Trans>}
+            description={
+              <Trans>
+                Sign in with your Nixo account and the recorder wires itself
+                up — meeting delivery, transcription, and note generation are
+                configured automatically.
+              </Trans>
+            }
+            completedTitle={<Trans>Nixo account connected</Trans>}
+            status={getStepStatus("login", currentStep)}
+            onBack={goBack}
+            onNext={goNext}
+            onSkip={skipCurrentStep}
+          >
+            <NixoLoginForm onSignedIn={goNext} />
           </OnboardingSection>
 
           <OnboardingSection
