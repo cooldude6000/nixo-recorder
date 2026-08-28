@@ -196,6 +196,12 @@ export const SETTING_DEFINITIONS = {
     path: ["notification", "mic_active_threshold"],
     default: 15 as number,
   },
+  // Overrides the baked-in VITE_NIXO_API_URL (unset = use the build default).
+  // Lets one artifact target a local/dev/prod backend without rebuilding.
+  nixo_api_url: {
+    type: "string",
+    path: ["nixo", "api_url"],
+  },
   current_llm_provider: {
     type: "string",
     path: ["ai", "current_llm_provider"],

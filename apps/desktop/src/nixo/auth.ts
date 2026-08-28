@@ -3,6 +3,7 @@ import { fetch as tauriFetch } from "@tauri-apps/plugin-http";
 import { commands as store2Commands } from "@anlg/plugin-store2";
 
 import { env } from "~/env";
+import { getStoredSettingValues } from "~/settings/queries";
 
 // Session storage lives in the OS keychain (store2), same mechanism as AI
 // provider API keys. This module is deliberately independent of the vendor
@@ -22,8 +23,20 @@ export type NixoSession = {
   user: { id: string; email: string };
 };
 
-export function nixoApiUrl(): string {
-  return env.VITE_NIXO_API_URL.replace(/\/+$/, "");
+// Stored override first (nixo_api_url setting), build-time default second —
+// one artifact can target a local/dev/prod backend without rebuilding.
+export async function getNixoApiUrl(): Promise<string> {
+  let stored: unknown;
+  try {
+    stored = (await getStoredSettingValues()).values.nixo_api_url;
+  } catch {
+    stored = undefined;
+  }
+  const url =
+    typeof stored === "string" && stored.trim()
+      ? stored.trim()
+      : env.VITE_NIXO_API_URL;
+  return url.replace(/\/+$/, "");
 }
 
 function parseSession(raw: string | null): NixoSession | null {
@@ -84,7 +97,7 @@ export async function signInToNixo(
   email: string,
   password: string,
 ): Promise<NixoSession> {
-  const resp = await tauriFetch(`${nixoApiUrl()}/api/recorder/login`, {
+  const resp = await tauriFetch(`${await getNixoApiUrl()}/api/recorder/login`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ email, password }),
@@ -109,7 +122,7 @@ async function refreshNixoSession(
   refreshToken: string,
 ): Promise<NixoSession | null> {
   try {
-    const resp = await tauriFetch(`${nixoApiUrl()}/api/recorder/refresh`, {
+    const resp = await tauriFetch(`${await getNixoApiUrl()}/api/recorder/refresh`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ refresh_token: refreshToken }),

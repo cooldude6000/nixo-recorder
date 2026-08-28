@@ -2,7 +2,7 @@ import { fetch as tauriFetch } from "@tauri-apps/plugin-http";
 
 import { commands as webhookCommands } from "@anlg/plugin-local-api";
 
-import { getNixoAccessToken, nixoApiUrl } from "./auth";
+import { getNixoAccessToken, getNixoApiUrl } from "./auth";
 
 import { setAiProvider } from "~/settings/providers";
 import { setSettingValues } from "~/settings/queries";
@@ -31,7 +31,7 @@ async function authedFetch(
   if (!token) throw new Error("not_signed_in");
   const url = pathOrUrl.startsWith("http")
     ? pathOrUrl
-    : `${nixoApiUrl()}${pathOrUrl}`;
+    : `${await getNixoApiUrl()}${pathOrUrl}`;
   const headers = new Headers(init?.headers);
   headers.set("Authorization", `Bearer ${token}`);
   return tauriFetch(url, { ...init, headers });
@@ -121,7 +121,7 @@ export async function refreshNixoSttKey(): Promise<boolean> {
   try {
     const token = await getNixoAccessToken();
     if (!token) return false;
-    const resp = await tauriFetch(`${nixoApiUrl()}/api/recorder/stt-key`, {
+    const resp = await tauriFetch(`${await getNixoApiUrl()}/api/recorder/stt-key`, {
       method: "POST",
       headers: { Authorization: `Bearer ${token}` },
     });
